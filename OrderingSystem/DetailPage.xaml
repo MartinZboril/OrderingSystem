@@ -1,0 +1,186 @@
+﻿<Page x:Class="OrderingSystem.DetailPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:OrderingSystem"
+      mc:Ignorable="d" 
+      Title="DetailPage"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    MinHeight="725" MinWidth="1055">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="5*" />
+        </Grid.RowDefinitions>
+
+        <Grid Background="#FFA81919" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*" />
+                <ColumnDefinition Width="1.5*" />
+                <ColumnDefinition Width="350" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="0.1*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock FontSize="40" Grid.Column="1" FontWeight="Bold"  HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center">MUSIC SHOP</TextBlock>
+
+            <Grid Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Button x:Name="RegistrationButton" Grid.Row="1" Width="150" Click="RegistrationButton_Click">Registrovat se</Button>
+                <Button x:Name="LoginButton" Grid.Row="3" Width="150" Click="LoginButton_Click">Prihlasit se</Button>
+                <Button x:Name="Profile" Grid.Row="1" Grid.RowSpan="3" Width="150" Visibility="Hidden" Click="Profile_Click">Můj profil</Button>
+            </Grid>
+
+            <Grid Grid.Column="4">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1" Height="100" Foreground="Black" Background="#FFEAEAEA">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="45" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+
+                        <Button x:Name="CartButton" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Height="35" Click="CartButton_Click" Width="35" Grid.RowSpan="3">
+                            <iconPacks:PackIconModern Kind="Cart" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Button>
+                        <TextBlock x:Name="PriceOFSelectedGoods" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Height="20" Margin="0,0,0,6" Width="122" FontSize="16">0 Kč</TextBlock>
+                        <TextBlock x:Name="PieceOFSelectedGoods"  Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Height="23" Margin="0,4,0,3" Width="84" FontSize="16">0 Ks</TextBlock>
+                    </Grid>
+                </Label>
+            </Grid>
+        </Grid>
+
+        <Label Grid.Row="1" Background="Black"></Label>
+
+        <StackPanel Grid.Row="2" Background="White">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="350" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Background="#FFEEEEEE">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"></RowDefinition>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Žánry" Margin="10,0,0,0" FontWeight="Bold" FontSize="24"></TextBlock>
+                    <ListView x:Name="ListViewOfCategories" SelectionChanged="ListViewOfCategories_SelectionChanged" Grid.Row="1" Margin="0,0,0,0">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock FontSize="18" Margin="10,0,0,0" Text="{Binding Category}"></TextBlock>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="273*" />
+                            <ColumnDefinition Width="346*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40" />
+                        </Grid.RowDefinitions>
+
+
+                        <Button x:Name="BackButton" Content="Zpět k nabídce" Background="White" VerticalAlignment="Bottom" Click="BackButton_Click" BorderThickness="0" HorizontalAlignment="Left" FontSize="16"></Button>
+
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35" />
+                            <ColumnDefinition Width="19*" />
+                            <ColumnDefinition Width="93" />
+                            <ColumnDefinition Width="32*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="0.4*" />
+                            <RowDefinition Height="100" />
+                            <RowDefinition Height="0.5*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Image x:Name="ImageOfAlbum" Grid.Column="1" Grid.RowSpan="2" Grid.Row="1"></Image>
+
+                        <Grid Grid.Column="3" Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="164" />
+                                <RowDefinition Height="48" />
+                                <RowDefinition Height="55" />
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0">
+                                <TextBlock x:Name="Name" TextWrapping="Wrap" FontSize="36" FontWeight="Bold"></TextBlock>
+                                <TextBlock></TextBlock>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="120"/>
+                                        <ColumnDefinition Width="0.3*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock FontSize="20" Grid.ColumnSpan="2" Margin="0,0,291,0">Datum vydání:</TextBlock>
+                                    <TextBlock x:Name="YearOfRealising" FontSize="20" Margin="132,0,145,0" Grid.ColumnSpan="2"/>
+                                </Grid>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="120"/>
+                                        <ColumnDefinition Width="0.3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock FontSize="20" Margin="0,0,72,0">Žánr:</TextBlock>
+                                    <TextBlock x:Name="Category" FontSize="20" Grid.ColumnSpan="2" Margin="48,0,72,0"/>
+                                </Grid>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="120"/>
+                                        <ColumnDefinition Width="0.3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock FontSize="20" Margin="0,0,85,0">Typ:</TextBlock>
+                                    <TextBlock x:Name="Type" FontSize="20" Grid.ColumnSpan="2" Margin="40,0,80,0"/>
+                                </Grid>
+
+                            </StackPanel>
+                            <TextBlock Text="Cena:" Grid.Row="1" FontSize="20" Height="26" VerticalAlignment="Top" Margin="0,4,367,0"  />
+                            <TextBlock x:Name="Price" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20"  Height="26" FontWeight="Bold" Margin="54,4,0,18" Width="147"/>
+
+                            <Grid Grid.Row="2" Margin="0,0,0,10">
+                                <Button x:Name="Buy_Button" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Height="30" Width="100" Content="Koupit" Click="Buy_Button_Click" Margin="0,0,0,0"/>
+                            </Grid>
+
+
+                        </Grid>
+                        <TextBlock x:Name="Description" TextWrapping="Wrap" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" FontSize="22"></TextBlock>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>
